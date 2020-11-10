@@ -1,0 +1,35 @@
+package ${package}.dao;
+
+import ${package}.domain.DO.${className}DO;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity}DO;
+import ${package.Entity}.query.${entity}Query;
+import ${package.Mapper}.${entity}Mapper;
+import org.springframework.stereotype.Repository;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
+import javax.annotation.Resource;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ * @version 1.0
+ */
+@Repository
+public class ${className}DaoImpl extends ServiceImpl<${className}Mapper, ${className}DO> implements ${className}Dao {
+
+    @Resource
+    ${className}Mapper mapper;
+
+    @Override
+    public List<${className}DO> findAll(${className}Query query) {
+        return mapper.findAll(query);
+    }
+
+}
+

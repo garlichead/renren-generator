@@ -13,18 +13,78 @@ import java.util.Map;
  * @version 1.0
  */
 public interface ${className}Service {
-	
-	${className}Entity queryObject(${pk.attrType} ${pk.attrname});
-	
-	List<${className}Entity> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(${className}Entity ${classname});
-	
-	void update(${className}Entity ${classname});
-	
-	void delete(${pk.attrType} ${pk.attrname});
-	
-	void deleteBatch(${pk.attrType}[] ${pk.attrname}s);
+
+	/**
+     * 分页获取列表
+     *
+     * @param query 参数
+     * @return PageBean
+     */
+	List<${className}DTO> findPage(${className}Query query);
+
+	/**
+	 * 获取列表
+	 *
+	 * @param query 查询条件
+	 * @return 列表
+	 */
+	List<${className}DTO> findAll(${className}Query query);
+
+	/**
+	 * 获取详情
+	 *
+	 * @param id id
+	 * @return 实体对象
+	 */
+	${className}DTO getById(Long id);
+
+	/**
+	 * 更新
+	 *
+	 * @param id  id
+	 * @param dto 参数
+	 * @return 是否更新成功
+	 */
+	Boolean update(Long id, ${className}DTO dto);
+
+	/**
+	 * 批量修改
+	 *
+	 * @param list
+	 * @return
+	 */
+	Boolean updateBatch(List<${className}DTO> list);
+
+	/**
+	 * 新增
+	 *
+	 * @param request
+	 * @return 是否新增成功
+	 */
+	Long save(${className}DTO request);
+
+	/**
+	 * 批量新增
+	 *
+	 * @param list
+	 * @return
+	 */
+	List<Long> saveBatch(List<${className}DTO> list);
+
+	/**
+	 * 根据id进行删除
+	 *
+	 * @param id
+	 * @return
+	 */
+	Boolean removeById(Long id);
+
+	/**
+	 * 根据id列表进行删除
+	 *
+	 * @param idList
+	 * @return
+	 */
+	Boolean removeByIdList(List<Long> idList);
+
 }

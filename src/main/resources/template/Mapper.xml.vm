@@ -3,18 +3,17 @@
 
 <mapper namespace="${package}.mapper.${className}Mapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="${package}.domain.DO.${className}DO" id="${classname}Map">
 #foreach($column in $columns)
         <result property="${column.attrname}" column="${column.columnName}"/>
 #end
     </resultMap>
 
-	<select id="queryObject" resultType="${package}.entity.${className}Entity">
+	<select id="queryObject" resultType="${package}.domain.DO.${className}DO">
 		select * from ${tableName} where ${pk.columnName} = #{value}
 	</select>
 
-	<select id="queryList" resultType="${package}.entity.${className}Entity">
+	<select id="queryList" resultType="${package}.domain.DO.${className}DO">
 		select * from ${tableName}
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -33,7 +32,7 @@
 		select count(*) from ${tableName} 
 	</select>
 	 
-	<insert id="save" parameterType="${package}.entity.${className}Entity"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+	<insert id="save" parameterType="${package}.domain.DO.${className}DO"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
 		insert into ${tableName}
 		(
 #foreach($column in $columns)
@@ -54,7 +53,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="${package}.entity.${className}Entity">
+	<update id="update" parameterType="${package}.domain.DO.${className}DO">
 		update ${tableName} 
 		<set>
 #foreach($column in $columns)

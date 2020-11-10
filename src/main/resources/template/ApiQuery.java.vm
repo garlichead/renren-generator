@@ -1,14 +1,12 @@
 package ${package}.domain.query;
 
 import java.util.Date;
-import ${package}.domain.SuperEntity;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import com.deepexi.util.pojo.AbstractObject;
-import com.alibaba.fastjson.annotation.JSONField;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import ${package}.domain.BaseQuery;
 
 /**

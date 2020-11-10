@@ -1,7 +1,6 @@
 package ${package}.domain.DTO;
 
 import java.util.Date;
-import ${package}.domain.SuperEntity;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
@@ -9,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import com.deepexi.util.pojo.AbstractObject;
 import com.alibaba.fastjson.annotation.JSONField;
+import java.io.Serializable;
 
 /**
  * ${comments}

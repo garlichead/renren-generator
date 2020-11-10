@@ -1,16 +1,14 @@
-package ${package}.domain.DTO;
+package ${package}.api;
 
-import java.util.Date;
-import ${package}.domain.SuperEntity;
+import java.util.List;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import com.deepexi.util.pojo.AbstractObject;
-import com.alibaba.fastjson.annotation.JSONField;
 import ${package}.domain.BaseDTO;
 import ${package}.domain.dto.${className}DTO;
+import ${package}.domain.dto.${className}Query;
+import org.springframework.web.bind.annotation.*;
+import com.deepexi.util.pageHelper.PageBean;
 
 /**
  * ${comments} Api类
