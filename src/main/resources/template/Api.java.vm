@@ -1,0 +1,98 @@
+package ${package}.domain.DTO;
+
+import java.util.Date;
+import ${package}.domain.SuperEntity;
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import com.deepexi.util.pojo.AbstractObject;
+import com.alibaba.fastjson.annotation.JSONField;
+import ${package}.domain.BaseDTO;
+import ${package}.domain.dto.${className}DTO;
+
+/**
+ * ${comments} Api类
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ * @version 1.0
+ */
+@RequestMapping("/middle-api/watson-domain-${module}/v1/${className}")
+public interface ${className}Api {
+
+	/**
+	 * 分页获取列表
+	 *
+	 * @param query 查询类
+	 * @return 列表
+	 */
+	@PostMapping("/find/page")
+	PageBean<${className}DTO> findPage(@RequestBody ${className}Query query);
+
+	/**
+     * 获取全部列表
+     *
+     * @param query 查询类
+     * @return 列表
+     */
+	@GetMapping("/find/all")
+	List<${className}DTO> findList(@RequestBody ${className}Query query);
+
+	/**
+     * 通过ID查询
+     *
+     * @param id
+     * @return
+     */
+	@GetMapping("/{id}")
+	${className}DTO getById(@PathVariable Long id);
+
+	/**
+     * 新增
+     *
+     * @param request
+     * @return
+     */
+	@PostMapping
+	Long save(@RequestBody ${className}DTO request);
+
+	/**
+     * 修改单个
+     *
+     * @param id
+     * @param request
+     * @return
+     */
+	@PutMapping("/{id}")
+	Boolean update(@PathVariable Long id, @RequestBody ${className}DTO request);
+
+
+	/**
+     * 批量新增
+     *
+     * @param list
+     * @return
+     */
+	@PostMapping("/batch")
+	List<Long> saveBatch(@RequestBody List<${className}DTO> list);
+
+	/**
+     * 批量修改
+     *
+     * @param list
+     * @return
+     */
+	@PutMapping("/batch")
+	Boolean updateBatch(@RequestBody List<${className}DTO> list);
+
+	/**
+     * 批量删除
+     * @param idList 删除结果数组
+     * @return 删除结果
+     */
+	@DeleteMapping
+	Boolean deleteByIdList(@RequestBody List<Long> idList);
+
+}

@@ -9,7 +9,7 @@ server:
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
-        driverClassName: com.mysql.jdbc.Driver
+        driverClassName: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://10.201.2.3:3306/tf-domain-schedule?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
         username: root
         password: uCaUm6YOjh9OFyRl

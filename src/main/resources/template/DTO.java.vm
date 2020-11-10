@@ -1,4 +1,4 @@
-package ${package}.domain.DO;
+package ${package}.domain.DTO;
 
 import java.util.Date;
 import ${package}.domain.SuperEntity;
@@ -7,9 +7,8 @@ import java.math.BigDecimal;
 #end
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-
+import com.deepexi.util.pojo.AbstractObject;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * ${comments}
@@ -20,14 +19,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "${tableName}")
-public class ${className}DO extends SuperEntity {
+public class ${className}DTO extends AbstractObject implements Serializable {
 
 #foreach ($column in $columns)
 	/**
 	 * $column.comments
 	 */
-	@TableField(value = "$column.columnName")
+	@JSONField(name = "$column.attrname")
 	private $column.attrType $column.attrname;
 
 #end
