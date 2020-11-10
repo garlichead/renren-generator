@@ -22,10 +22,10 @@ import io.renren.common.utils.R;
 
 /**
  * ${comments}
- * 
+ *
  * @author ${author}
- * @email ${email}
  * @date ${datetime}
+ * @version 1.0
  */
 @RestController
 @RequestMapping("${pathName}")

@@ -30,9 +30,9 @@ public class GenUtils {
 
 	public static List<String> getTemplates(){
 		List<String> templates = new ArrayList<String>();
-		templates.add("template/Entity.java.vm");
-		templates.add("template/Dao.java.vm");
-		templates.add("template/Dao.xml.vm");
+		templates.add("template/DO.java.vm");
+		templates.add("template/Mapper.java.vm");
+		templates.add("template/Mapper.xml.vm");
 		templates.add("template/Service.java.vm");
 		templates.add("template/ServiceImpl.java.vm");
 		templates.add("template/Controller.java.vm");
@@ -106,6 +106,7 @@ public class GenUtils {
 		map.put("pathName", tableEntity.getClassname().toLowerCase());
 		map.put("columns", tableEntity.getColumns());
 		map.put("package", config.getString("package"));
+		map.put("module", config.getString("module"));
 		map.put("author", config.getString("author"));
 		map.put("email", config.getString("email"));
 		map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
@@ -169,11 +170,11 @@ public class GenUtils {
 			packagePath += packageName.replace(".", File.separator) + File.separator;
 		}
 		
-		if(template.contains("Entity.java.vm")){
+		if(template.contains("DO.java.vm")){
 			return packagePath + "entity" + File.separator + className + "Entity.java";
 		}
 		
-		if(template.contains("Dao.java.vm")){
+		if(template.contains("Mapper.java.vm")){
 			return packagePath + "dao" + File.separator + className + "Dao.java";
 		}
 
@@ -189,7 +190,7 @@ public class GenUtils {
 			return packagePath + "controller" + File.separator + className + "Controller.java";
 		}
 
-		if(template.contains("Dao.xml.vm")){
+		if(template.contains("Mapper.xml.vm")){
 			return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + "generator" + File.separator + className + "Dao.xml";
 		}
 

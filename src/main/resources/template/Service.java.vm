@@ -9,8 +9,8 @@ import java.util.Map;
  * ${comments}
  * 
  * @author ${author}
- * @email ${email}
  * @date ${datetime}
+ * @version 1.0
  */
 public interface ${className}Service {
 	
