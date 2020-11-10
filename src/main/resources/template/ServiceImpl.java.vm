@@ -9,7 +9,7 @@ import java.util.Map;
 import ${package}.dao.${className}Dao;
 import ${package}.entity.${className}Entity;
 import ${package}.service.${className}Service;
-
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ${comments}
@@ -18,11 +18,15 @@ import ${package}.service.${className}Service;
  * @date ${datetime}
  * @version 1.0
  */
-@Service("${classname}Service")
+@Slf4j
+@Service
 public class ${className}ServiceImpl implements ${className}Service {
 
-	@Autowired
-	private ${className}Dao ${classname}Dao;
+	final ${className}Dao ${classname}Dao;
+
+	${className}ServiceImpl(${className}Dao ${classname}Dao) {
+		this.${classname}Dao = ${classname}Dao;
+	}
 
 	@Override
 	public List<${className}DTO> findPage(${className}Query query) {
@@ -42,7 +46,7 @@ public class ${className}ServiceImpl implements ${className}Service {
 	@Override
 	public List<${className}DTO> findAll(${className}Query query) {
 		List<${className}DO> list = ${classname}Dao.findAll(query);
-		return ObjectCloneUtils.convertList(list, ${className}DTO.class, CloneDirection.OPPOSITE)
+		return ObjectCloneUtils.convertList(list, ${className}DTO.class, CloneDirection.OPPOSITE);
 	}
 
 	@Override
@@ -80,7 +84,8 @@ public class ${className}ServiceImpl implements ${className}Service {
 			log.info("${className}DTO批量修改数据为空");
 			return false;
 		}
-		List<${className}DO> itemFinanceDOList = ObjectCloneUtils.convertList(list, ${className}DTO.class, CloneDirection.FORWARD);
+		List<${className}DO> itemFinanceDOList =
+				ObjectCloneUtils.convertList(list, ${className}DO.class, CloneDirection.FORWARD);
 		return ${classname}Dao.updateBatchById(itemFinanceDOList);
 	}
 
@@ -90,7 +95,7 @@ public class ${className}ServiceImpl implements ${className}Service {
 			log.info("新增${className}DTO数据为空");
 			return 0L;
 		}
-		${className}DO itemFinanceDO = dto.clone(${className}DTO.class, CloneDirection.FORWARD);
+		${className}DO itemFinanceDO = dto.clone(${className}DO.class, CloneDirection.FORWARD);
 		${classname}Dao.save(itemFinanceDO);
 		return itemFinanceDO.getId();
 	}
@@ -101,14 +106,15 @@ public class ${className}ServiceImpl implements ${className}Service {
 		log.info("${className}DTO批量新增数据为空");
 		return Collections.EMPTY_LIST;
 		}
-		List<${className}DO> itemFinanceDOList = ObjectCloneUtils.convertList(list, ${className}DO.class, CloneDirection.FORWARD);
+		List<${className}DO> itemFinanceDOList =
+				ObjectCloneUtils.convertList(list, ${className}DO.class, CloneDirection.FORWARD);
 		${classname}Dao.saveBatch(itemFinanceDOList);
-		return itemFinanceDOList.stream().map(${classname}DO::getId).collect(Collectors.toList());
+		return itemFinanceDOList.stream().map(${className}DO::getId).collect(Collectors.toList());
 	}
 
 	@Override
 	public Boolean removeById(Long id) {
-		return ${className}Dao.removeById(id);
+		return ${classname}Dao.removeById(id);
 	}
 
 	@Override

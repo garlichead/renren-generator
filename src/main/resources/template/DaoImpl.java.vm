@@ -1,13 +1,8 @@
 package ${package}.dao;
 
-import ${package}.domain.DO.${className}DO;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-
-import ${package.Service}.${table.serviceName};
-import ${package.Entity}.${entity}DO;
-import ${package.Entity}.query.${entity}Query;
-import ${package.Mapper}.${entity}Mapper;
+import ${package}.domain.DO.${entity}DO;
+import ${package}.domain.query.${entity}Query;
+import ${package}.mapper.${entity}Mapper;
 import org.springframework.stereotype.Repository;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;

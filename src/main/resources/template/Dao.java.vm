@@ -2,7 +2,8 @@ package ${package}.dao;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import ${package}.domain.DO.${className}DO;
-import ${package}.query.${className}Query;
+import ${package}.domain.query.${className}Query;
+import java.util.List;
 
 /**
  * ${comments}
